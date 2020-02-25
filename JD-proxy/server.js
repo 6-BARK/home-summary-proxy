@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express')
 const axios = require('axios')
 
@@ -13,7 +14,7 @@ app.get('/api/listing/:id/data', (req, res) => {
   let id = req.params.id
   axios.get(`http://localhost:3002/api/listing/${id}/data`)
     .then(response => {
-      res.send(response.data);
+      res.send(response.data[0]);
     })
     .catch(err => {
       console.log(err)
